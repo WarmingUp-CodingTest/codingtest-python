@@ -19,7 +19,7 @@ for shop in combinations(chicken_shops, m):
   for house in houses:
     chicken_distance = 999999
     for i in range(m):
-      chicken_distance = min(chicken_distance, abs(house[0] - chicken_shops[j][0]) + abs(house[1] - chicken_shops[j][1]))
+      chicken_distance = min(chicken_distance, abs(house[0] - chicken_shops[i][0]) + abs(house[1] - chicken_shops[i][1]))
     sum += chicken_distance
   chicken_distance_min = min(chicken_distance_min, sum)
 
