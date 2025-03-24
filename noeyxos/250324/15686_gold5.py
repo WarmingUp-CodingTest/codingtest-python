@@ -1,3 +1,6 @@
+from itertools import combinations
+
+
 n, m = map(int, input().split())
 city = [list(map(int, input().split())) for _ in range(n)]
 
@@ -12,12 +15,23 @@ for i in range(n):
         elif city[i][j] == 2: 
             chicken.append((i, j))
 
-print(house)
-print(chicken)
-
 def chicken_distance(a, b): 
     return abs(a[0]- b[0]) + abs(a[1]-b[1])
 
 
-# for dx, dy in city :
-#     min_distance = 
+ans = 2 * n * len(house)
+
+for combi in combinations(chicken, m): 
+    total = 0
+
+    for hou in house :
+        closest_distance = float('inf')
+        for chi in combi : 
+            dist = chicken_distance(hou, chi)
+            closest_distance = min(closest_distance, dist)   
+
+        total += closest_distance
+    
+    ans = min(ans, total)
+
+print(ans)
