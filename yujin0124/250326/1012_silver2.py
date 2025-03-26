@@ -1,6 +1,5 @@
 import sys
 input = sys.stdin.readline
-from collections import deque
 sys.setrecursionlimit(100000)
 
 dx = [0, 0, 1, -1]
@@ -25,7 +24,6 @@ while t > 0:
   t -= 1
   
   m, n, k = map(int, input().split())
-  que = deque()
   for i in range(k):
     x, y = map(int, input().split())
     field[x][y] = 1
