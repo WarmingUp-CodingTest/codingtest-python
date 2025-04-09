@@ -19,6 +19,7 @@ while True:
             robot[i] = False
             robot[i+1] = True
             belt[i+1] -= 1
+    robot[n-1] = False
 
     if belt[0] > 0 : 
         robot[0] = True
