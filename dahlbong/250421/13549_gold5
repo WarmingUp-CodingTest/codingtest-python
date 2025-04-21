@@ -18,7 +18,7 @@ while q:
         visited[cur * 2] = visited[cur]
         q.appendleft(cur * 2)
 
-    for next_pos in [cur - 1, cur + 1]:
-        if 0 <= next_pos < MAX and visited[next_pos] == -1:
-            visited[next_pos] = visited[cur] + 1
-            q.append(next_pos)
+    for next in [cur - 1, cur + 1]:
+        if 0 <= next < MAX and visited[next] == -1:
+            visited[next] = visited[cur] + 1
+            q.append(next)
