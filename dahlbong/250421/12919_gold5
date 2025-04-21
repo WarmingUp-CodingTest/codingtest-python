@@ -1,0 +1,10 @@
+S = input()
+T = input()
+
+def change_string(cur):
+    if len(cur) == len(T):
+        return 1 if cur == T else 0
+
+    return change_string(cur + 'A') or change_string((cur + 'B')[::-1])
+
+print(change_string(S))

@@ -1,0 +1,24 @@
+from collections import deque
+
+N, K = map(int, input().split())
+MAX = 200001
+visited = [-1] * MAX
+
+q = deque()
+q.append(N)
+visited[N] = 0
+
+while q:
+    cur = q.popleft()
+    if cur == K:
+        print(visited[cur])
+        break
+
+    if 0 <= cur * 2 < MAX and visited[cur * 2] == -1:
+        visited[cur * 2] = visited[cur]
+        q.appendleft(cur * 2)
+
+    for next_pos in [cur - 1, cur + 1]:
+        if 0 <= next_pos < MAX and visited[next_pos] == -1:
+            visited[next_pos] = visited[cur] + 1
+            q.append(next_pos)
