@@ -1,0 +1,11 @@
+S = input()
+T = input()
+
+def dfs(cur):
+    if cur == S:
+        return 1
+    if len(cur) < len(S):
+        return 0
+    return (cur[-1] == 'A' and dfs(cur[:-1])) or (cur[0] == 'B' and dfs(cur[::-1][:-1]))
+
+print(1 if dfs(T) else 0)
