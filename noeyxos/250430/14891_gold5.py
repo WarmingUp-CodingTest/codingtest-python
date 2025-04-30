@@ -1,11 +1,9 @@
 from collections import deque
 
-gears = [(map(int, input())) for _ in range(4)]
+gears = [deque(map(int, input())) for _ in range(4)]
 
 k = int(input())
 commands = [tuple(map(int, input().split())) for _ in range(k)]
-
-score = 0
 
 def rotate(idx, direction, visited):
     visited[idx] = True
@@ -19,5 +17,19 @@ def rotate(idx, direction, visited):
             rotate(idx + 1, -direction, visited)
     
     if direction == 1 :
-        gears[idx].append(gears[idx].pop())
-        
+        gears[idx].appendleft(gears[idx].pop())
+    else : 
+        gears[idx].append(gears[idx].popleft())
+
+
+for gear_num, dir in commands:
+    visited = [False] * 4
+    rotate(gear_num - 1, dir, visited)
+    
+score = 0
+for i in range(4): 
+    if gears[i][0] == 1 : 
+        score += (1 << i)
+
+
+print(score)
